@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Our Cafe</h1>
+
+<h2>Cafes</h2>
+<ul>
+    {% for cafe in cafes %}
+    <li>
+        <h3>{{ cafe.name }}</h3>
+        <p>{{ cafe.address }}, {{ cafe.city }}, {{ cafe.state }} {{ cafe.zip_code }}</p>
+        <p>Phone: {{ cafe.phone }}</p>
+        <p>Website: <a href="{{ cafe.website }}">{{ cafe.website }}</a></p>
+        <p>{{ cafe.description }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Menu</h2>
+<ul>
+    {% for menu in menus %}
+    <li>
+        <h3>{{ menu.name }}</h3>
+        <p>{{ menu.description }}</p>
+        <p>Price: ${{ menu.price }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Reviews</h2>
+<ul>
+    {% for review in reviews %}
+    <li>
+        <h3>{{ review.cafe.name }}</h3>
+        <p>Rating: {{ review.rating }}</p>
+        <p>{{ review.review }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Employees</h2>
+<ul>
+    {% for employee in employees %}
+    <li>
+        <h3>{{ employee.first_name }} {{ employee.last_name }}</h3>
+        <p>Position: {{ employee.position }}</p>
+        <p>Phone: {{ employee.phone }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Offers</h2>
+<ul>
+    {% for offer in offers %}
+    <li>
+        <h3>{{ offer.name }}</h3>
+        <p>{{ offer.description }}</p>
+        <p>Discount: ${{ offer.discount }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

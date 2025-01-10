@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="ms-5">Cafes</h1>
+<ul class="ms-5">
+  {% for cafe in object_list %}
+  <li>
+    <h3>
+      <a class="link-underline link-underline-opacity-0" href="{{cafe.pk}}"
+        >{{cafe.name}}</a
+      >
+    </h3>
+    <p>
+      {{ cafe.address }}, {{ cafe.city }}, {{ cafe.state }} {{ cafe.zip_code }}
+    </p>
+    <p>Phone: {{ cafe.phone }}</p>
+    <p>Website: <a href="{{ cafe.website }}">{{ cafe.website }}</a></p>
+    <p>{{ cafe.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Create Order</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      {{ order_form.cafe.label_tag }} {{ order_form.cafe }}
+    </div>
+    <div class="mb-3">
+      {{ order_form.customer.label_tag }} {{ order_form.customer }}
+    </div>
+    <div class="mb-3">
+      {{ order_item_form.menu_item.label_tag }} {{ order_item_form.menu_item }}
+    </div>
+    <div class="mb-3">
+      {{ order_item_form.quantity.label_tag }} {{ order_item_form.quantity }}
+    </div>
+    <button type="submit" class="btn btn-primary">Order</button>
+  </form>
+</div>
+{% endblock %}
