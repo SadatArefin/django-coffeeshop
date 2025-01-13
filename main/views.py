@@ -16,16 +16,16 @@ class CafeDetailView(DetailView):
     model = Cafe
     template_name = 'main/cafe_detail.html'
 
-class OrderCreateView(View):
-    def get(self, request):
+
+def OrderCreateView(request):
+    if request.method == 'GET':
         order_form = OrderForm()
         order_item_form = OrderItemForm()
         return render(request, 'main/create_order.html', {
             'order_form': order_form,
             'order_item_form': order_item_form
         })
-
-    def post(self, request):
+    elif request.method == 'POST':
         order_form = OrderForm(request.POST)
         order_item_form = OrderItemForm(request.POST)
         if order_form.is_valid() and order_item_form.is_valid():
@@ -39,10 +39,10 @@ class OrderCreateView(View):
             'order_item_form': order_item_form
         })
 
-    def get_menu_items(request, cafe_id):
-        menu_items = Menu.objects.filter(cafe_id=cafe_id)
-        menu_items_data = [{'id': item.id, 'name': item.name, 'price': item.price} for item in menu_items]
-        return JsonResponse(menu_items_data, safe=False)
+# def get_menu_items(request, cafe_id):
+#     menu_items = Menu.objects.filter(cafe_id=cafe_id)
+#     menu_items_data = [{'id': item.id, 'name': item.name, 'price': item.price} for item in menu_items]
+#     return JsonResponse(menu_items_data, safe=False)
 
 class OrderListView(ListView):
     model = Order

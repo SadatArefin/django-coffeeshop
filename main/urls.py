@@ -5,8 +5,8 @@ app_name = 'main'
 urlpatterns = [
     path('cafes/', views.CafeListView.as_view(), name='cafe-list'),
     path('cafes/<int:pk>/', views.CafeDetailView.as_view(), name='cafe-detail'),
-    path('cafes/create-order/', views.OrderCreateView.as_view(), name='create-order'),
-    path('cafes/<int:cafe_id>/menu-items/', views.OrderCreateView.get_menu_items, name='get-menu-items'),
+    path('cafes/create-order/', views.OrderCreateView, name='create-order'),
+    # path('cafes/<int:cafe_id>/menu-items/', views.OrderCreateView.get_menu_items, name='get-menu-items'),
     path('orders/', views.OrderListView.as_view(), name='order-list'),
 
     path('reviews/', views.ReviewListView.as_view(), name='review-list'),
